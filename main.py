@@ -32,72 +32,26 @@ button_height = 130 * (default_dpi / device_dpi)
 주문금액 = 0
 주문_이름 = ""
 
+temp =''
+
 count = 1
 
-#coffee
-아메리카노 = 0
-아메리카노_잔수 = 0
-에스프레소 = 0
-에스프레소_잔수 = 0
-드립 = 0
-드립_잔수 = 0
-더치 = 0
-더치_잔수 = 0
-라떼 = 0
-라떼_잔수 = 0
-더치라떼 = 0
-더치라떼_잔수 = 0
-바닐라라떼 = 0
-바닐라라떼_잔수 = 0
-민트라떼종류 = 0
-민트라떼종류_잔수 = 0
-카푸치노 = 0
-카푸치노_잔수 = 0
-콜드브루 = 0
-콜드브루_잔수 = 0
-카페모카 = 0
-카페모카_잔수 = 0
-보리커피 = 0
-보리커피_잔수 = 0
-플렛화이트 = 0
-플렛화이트_잔수 = 0
-꼼빠냐 = 0
-꼼빠냐_잔수 = 0
-아인슈페너 = 0
-아인슈페너_잔수 = 0
+dic_coffee_sum = {"아메리카노" : 0, "에스프레소" : 0, "드립" : 0, "더치" : 0, "라떼" : 0, "더치라떼" : 0, "바닐라라떼" : 0, "민트라떼" : 0, "카푸치노" : 0,
+           "콜드브루" : 0, "카페모카" : 0, "보리커피" : 0, "플렛화이트" : 0, "꼼빠냐" : 0, "아인슈페너" : 0}
 
-#beverage
-베리고 = 0
-베리고_잔수 = 0
-망고스무디 = 0
-망고스무디_잔수 = 0
-아보카도바나나 = 0
-아보카도바나나_잔수 = 0
-망고바나나 = 0
-망고바나나_잔수 = 0
-패션후르츠 = 0
-패션후르츠_잔수 = 0
-레몬에이드 = 0
-레몬에이드_잔수 = 0
-복숭아바질 = 0
-복숭아바질_잔수 = 0
-초코라떼 = 0
-초코라떼_잔수 = 0
-핫초코 = 0
-핫초코_잔수 = 0
-자두에이드 = 0
-자두에이드_잔수 = 0
-유자민트티 = 0
-유자민트티_잔수 = 0
-미숫가루 = 0
-미숫가루_잔수 = 0
-밀크티 = 0
-밀크티_잔수 = 0
-딸기라떼 = 0
-딸기라떼_잔수 = 0
-애플민트스무디 = 0
-애플민트스무디_잔수 = 0
+dic_coffee_cup = {"아메리카노" : 0, "에스프레소" : 0, "드립" : 0, "더치" : 0, "라떼" : 0, "더치라떼" : 0, "바닐라라떼" : 0, "민트라떼" : 0, "카푸치노" : 0,
+           "콜드브루" : 0, "카페모카" : 0, "보리커피" : 0, "플렛화이트" : 0, "꼼빠냐" : 0, "아인슈페너" : 0}
 
+dic_beverage_sum = {"베리고" : 0, "망고스무디" : 0, "아보카도바나나" : 0, "망고바나나" : 0, "패션후르츠" : 0, "레몬에이드" : 0, "복숭아바질" : 0, "초코라떼" : 0,
+                    "핫초코" : 0, "자두에이드" : 0, "유자민트티" : 0, "미숫가루" : 0, "밀크티" : 0, "딸기라떼" : 0, "애플민트스무디" : 0}
+
+dic_beverage_cup = {"베리고" : 0, "망고스무디" : 0, "아보카도바나나" : 0, "망고바나나" : 0, "패션후르츠" : 0, "레몬에이드" : 0, "복숭아바질" : 0, "초코라떼" : 0,
+                    "핫초코" : 0, "자두에이드" : 0, "유자민트티" : 0, "미숫가루" : 0, "밀크티" : 0, "딸기라떼" : 0, "애플민트스무디" : 0}
+
+dic_menu_price = {"아메리카노" : 2500, "에스프레소" : 2500, "드립" : 4000, "더치" : 3500, "라떼" : 3000, "더치라떼" : 4000, "바닐라라떼" : 3500, "민트라떼" : 4000, "카푸치노" : 3000,
+           "콜드브루" : 3000, "카페모카" : 3500, "보리커피" : 2500, "플렛화이트" : 3000, "꼼빠냐" : 3500, "아인슈페너" : 4000, "베리고" : 4000, "망고스무디" : 4000, "아보카도바나나" : 3500,
+           "망고바나나" : 4000, "패션후르츠" : 3500, "레몬에이드" : 3500, "복숭아바질" : 3500, "초코라떼" : 3500,
+                    "핫초코" : 3500, "자두에이드" : 3500, "유자민트티" : 4000, "미숫가루" : 3500, "밀크티" : 3000, "딸기라떼" : 3500, "애플민트스무디" : 3500}
 
 
 
@@ -630,7 +584,7 @@ class OrderScreen(Screen):
             height=270,
             width=310
         )
-        복숭아바질에이드_button.bind(on_press = self.go_to_복숭아바질에이드)
+        복숭아바질에이드_button.bind(on_press =lambda instance, name="복숭아바질": self.복숭아바질_open_popup(name,instance))
         menu_layout.add_widget(복숭아바질에이드_button)
         
         초코라떼_button = Button(
@@ -1021,8 +975,7 @@ class OrderScreen(Screen):
             valign="middle",
             font_size = (font_size-5),
         )
-        
-        self.메뉴1_button.bind(on_press=self.go_to_주문)
+        self.메뉴1_button.bind(on_press =lambda instance : self.메뉴_open_popup("[장바구니] "+instance.text.split(" ")[0], instance))
         order_layout.add_widget(self.메뉴1_button)
 
         self.메뉴2_button = Button(
@@ -1036,7 +989,7 @@ class OrderScreen(Screen):
             height=button_height,
         )
         
-        self.메뉴2_button.bind(on_press=self.go_to_주문)
+        self.메뉴2_button.bind(on_press =lambda instance : self.메뉴_open_popup("[장바구니] "+instance.text.split(" ")[0], instance))
         order_layout.add_widget(self.메뉴2_button)
         
         self.메뉴3_button = Button(
@@ -1050,7 +1003,7 @@ class OrderScreen(Screen):
             height=button_height,
         )
         
-        self.메뉴3_button.bind(on_press=self.go_to_주문)
+        self.메뉴3_button.bind(on_press =lambda instance : self.메뉴_open_popup("[장바구니] "+instance.text.split(" ")[0], instance))
         order_layout.add_widget(self.메뉴3_button)
         
         
@@ -1065,7 +1018,7 @@ class OrderScreen(Screen):
             height=button_height,
         )
         
-        self.메뉴4_button.bind(on_press=self.go_to_주문)
+        self.메뉴4_button.bind(on_press =lambda instance : self.메뉴_open_popup("[장바구니] "+instance.text.split(" ")[0], instance))
         order_layout.add_widget(self.메뉴4_button)
         
         self.메뉴5_button = Button(
@@ -1079,7 +1032,7 @@ class OrderScreen(Screen):
             height=button_height,
         )
         
-        self.메뉴5_button.bind(on_press=self.go_to_주문)
+        self.메뉴5_button.bind(on_press =lambda instance : self.메뉴_open_popup("[장바구니] "+instance.text.split(" ")[0], instance))
         order_layout.add_widget(self.메뉴5_button)
         
         
@@ -1094,7 +1047,7 @@ class OrderScreen(Screen):
             height=button_height,
         )
         
-        self.메뉴6_button.bind(on_press=self.go_to_주문)
+        self.메뉴6_button.bind(on_press =lambda instance : self.메뉴_open_popup("[장바구니] "+instance.text.split(" ")[0], instance))
         order_layout.add_widget(self.메뉴6_button)
         
         
@@ -1109,7 +1062,7 @@ class OrderScreen(Screen):
             height=button_height,
         )
         
-        self.메뉴7_button.bind(on_press=self.go_to_주문)
+        self.메뉴7_button.bind(on_press =lambda instance : self.메뉴_open_popup("[장바구니] "+instance.text.split(" ")[0], instance))
         order_layout.add_widget(self.메뉴7_button)
         
         다음_button = Button(
@@ -1727,12 +1680,95 @@ class OrderScreen(Screen):
                            auto_dismiss=False)
         self.popup.open()
         
+    def 복숭아바질_open_popup(self, menu_name, instance):
+        # 팝업 내용 정의
+        content = FloatLayout()
+        content.add_widget(Label(font_name="NanumGothic",font_size=sp(26), pos_hint={'center_x': 0.5, 'y': 0.45}, text=menu_name))
+        수량 = Label(font_name="NanumGothic",font_size=sp(20),size_hint=(None, None),size=(100, 50),pos_hint={'center_x': 0.5, 'y': 0.5},text="[수량]")
+        content.add_widget(수량)
+        self.cup = Label(
+            font_name="NanumGothic",
+            font_size=sp(18),
+            size_hint=(None, None), 
+            size=(100, 50),  
+            pos_hint={'center_x': 0.5, 'y': 0.32},  # y를 조정하여 버튼 아래로 위치
+            text="1"
+            )
+        content.add_widget(self.cup)
+
+        content.add_widget(Button(text="닫기", font_name="NanumGothic",size_hint=(0.2, 0.2),pos_hint={'x': 0, 'y': 0}, on_press=lambda _ : self.go_to_닫기(instance)))
+        content.add_widget(Button(text="담기", font_name="NanumGothic",size_hint=(0.2, 0.2), pos_hint={'x': 0.8, 'y': 0}, on_press=lambda _ : self.go_to_복숭아바질(instance)))
+        content.add_widget(Button(text="+", font_name="NanumGothic",size_hint=(0.1, 0.1), pos_hint={'x': 0.55, 'y': 0.3}, on_press=lambda _ : self.plus(instance)))
+        content.add_widget(Button(text="-", font_name="NanumGothic",size_hint=(0.1, 0.1), pos_hint={'x': 0.35, 'y': 0.3}, on_press=lambda _ : self.minus(instance)))
+        self.popup = Popup(title="",
+                           content=content,
+                           size_hint=(0.7,None),
+                           height = dp(400),
+                           auto_dismiss=False)
+        self.popup.open()
+        
+    def 메뉴_open_popup(self, menu_name, instance):
+        # 팝업 내용 정의
+        content = FloatLayout()
+        content.add_widget(Label(font_name="NanumGothic",font_size=sp(26), pos_hint={'center_x': 0.5, 'y': 0.45}, text=menu_name))
+        수량 = Label(font_name="NanumGothic",font_size=sp(20),size_hint=(None, None),size=(100, 50),pos_hint={'center_x': 0.5, 'y': 0.5},text="[수량]")
+        content.add_widget(수량)
+        
+        
+        self.a = instance.text.split(" ")[0]
+        self.b = 0
+        if self.a in dic_coffee_sum.keys():
+            self.b = dic_coffee_cup[self.a]
+        elif self.a in dic_beverage_sum.keys():
+            self.b = dic_beverage_cup[self.b]
+            
+        self.cup = Label(
+            font_name="NanumGothic",
+            font_size=sp(18),
+            size_hint=(None, None), 
+            size=(100, 50),  
+            pos_hint={'center_x': 0.5, 'y': 0.32},  # y를 조정하여 버튼 아래로 위치
+            text=str(self.b)
+            )
+        content.add_widget(self.cup)
+
+        content.add_widget(Button(text="정정", font_name="NanumGothic",size_hint=(0.2, 0.2),pos_hint={'x': 0, 'y': 0}, on_press=lambda _ : self.go_to_정정(instance)))
+        content.add_widget(Button(text="삭제", font_name="NanumGothic",size_hint=(0.2, 0.2), pos_hint={'x': 0.8, 'y': 0}, on_press=lambda _ : self.go_to_삭제(instance)))
+        content.add_widget(Button(text="+", font_name="NanumGothic",size_hint=(0.1, 0.1), pos_hint={'x': 0.55, 'y': 0.3}, on_press=lambda _ : self.plus_2(instance)))
+        content.add_widget(Button(text="-", font_name="NanumGothic",size_hint=(0.1, 0.1), pos_hint={'x': 0.35, 'y': 0.3}, on_press=lambda _ : self.minus_2(instance)))
+        self.popup = Popup(title="",
+                           content=content,
+                           size_hint=(0.7,None),
+                           height = dp(400),
+                           auto_dismiss=False)
+        self.popup.open()
+        
     def record_selection(self,instance):
         if instance.state == 'down':
             self.last_selected = instance.text
         else : 
             self.last_selected = None
-        
+    
+    def plus_2(self, instance):
+        global dic_beverage_cup,dic_coffee_cup
+        if self.a in dic_beverage_cup.keys():
+            dic_beverage_cup[self.a] += 1
+            self.cup.text = str(dic_beverage_cup[self.a])
+        elif self.a in dic_coffee_cup.keys():
+            dic_coffee_cup[self.a] += 1
+            self.cup.text = str(dic_coffee_cup[self.a])
+            
+    def minus_2(self, instance):
+        global dic_beverage_cup,dic_coffee_cup
+        if int(self.cup.text) > 1:
+            if self.a in dic_beverage_cup.keys():
+                dic_beverage_cup[self.a] -= 1
+                self.cup.text = str(dic_beverage_cup[self.a])
+            elif self.a in dic_coffee_cup.keys():
+                dic_coffee_cup[self.a] -= 1
+                self.cup.text = str(dic_coffee_cup[self.a])
+        else:
+            pass
     
     def plus(self,instance):
         global count
@@ -1751,353 +1787,418 @@ class OrderScreen(Screen):
         global count
         count = 1
         self.popup.dismiss()
-        
+    
+    def go_to_삭제(self,instance):
+        if self.a in dic_beverage_cup.keys():
+            dic_beverage_cup[self.a] = 0
+            dic_beverage_sum[self.a] = 0
+        elif self.a in dic_coffee_cup.keys():
+            dic_coffee_cup[self.a] = 0
+            dic_coffee_sum[self.a] = 0
+
+        instance.text = ""
+        for _ in range(6) :
+            if _ == 0:
+                if self.메뉴1_button.text == '':
+                    self.메뉴1_button.text = self.메뉴2_button.text
+                    self.메뉴2_button.text = ''
+                else:
+                    pass
+            elif _ == 1:
+                if self.메뉴2_button.text == '':
+                    self.메뉴2_button.text = self.메뉴3_button.text
+                    self.메뉴3_button.text = ''
+                else :
+                    pass
+
+            elif _ == 2:
+                if self.메뉴3_button.text == '':
+                    self.메뉴3_button.text = self.메뉴4_button.text
+                    self.메뉴4_button.text = ''
+                else :
+                    pass
+                
+            elif _ == 3:
+                if self.메뉴4_button.text == '':
+                    self.메뉴4_button.text = self.메뉴5_button.text
+                    self.메뉴5_button.text = ''
+                else :
+                    pass
+                
+            elif _ == 4:
+                if self.메뉴5_button.text == '':
+                    self.메뉴5_button.text = self.메뉴6_button.text
+                    self.메뉴6_button.text = ''
+                else :
+                    pass
+                
+            elif _ == 5:
+                if self.메뉴6_button.text == '':
+                    self.메뉴6_button.text = self.메뉴7_button.text
+                    self.메뉴7_button.text = ''
+                else :
+                    pass
+
+        self.popup.dismiss()
+
+    def go_to_정정(self,instance):
+        global dic_beverage_cup,dic_coffee_cup,dic_menu_price
+        if self.a in dic_beverage_cup.keys():
+            instance.text = instance.text.split(" ")[0] + " " + str(dic_beverage_cup[self.a])
+            dic_beverage_sum[self.a] = dic_menu_price[self.a] * dic_beverage_cup[self.a]
+            self.popup.dismiss()
+            
+        elif self.a in dic_coffee_cup.keys():
+            instance.text = instance.text.split(" ")[0] + " " + str(dic_coffee_cup[self.a])
+            dic_coffee_sum[self.a] = dic_menu_price[self.a] * dic_coffee_cup[self.a]
+            self.popup.dismiss()
+    
     def go_to_아메리카노(self,instance):
-        global count,아메리카노,아메리카노_잔수
-        아메리카노 += (2500 * count)
-        아메리카노_잔수 += count
+        global count,dic_coffee_sum,dic_coffee_cup
+        dic_coffee_sum["아메리카노"] += (2500 * count)
+        dic_coffee_cup["아메리카노"] += count
         #self.메뉴1_button.text = f"아메리카노 {아메리카노_잔수}"
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"아메리카노 {아메리카노_잔수}"
+            self.메뉴1_button.text = f"아메리카노 {dic_coffee_cup["아메리카노"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"아메리카노 {아메리카노_잔수}"
+            self.메뉴2_button.text = f"아메리카노 {dic_coffee_cup["아메리카노"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"아메리카노 {아메리카노_잔수}"
+            self.메뉴3_button.text = f"아메리카노 {dic_coffee_cup["아메리카노"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"아메리카노 {아메리카노_잔수}"
+            self.메뉴4_button.text = f"아메리카노 {dic_coffee_cup["아메리카노"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"아메리카노 {아메리카노_잔수}"
+            self.메뉴5_button.text = f"아메리카노 {dic_coffee_cup["아메리카노"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"아메리카노 {아메리카노_잔수}"
+            self.메뉴6_button.text = f"아메리카노 {dic_coffee_cup["아메리카노"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"아메리카노 {아메리카노_잔수}"
+            self.메뉴7_button.text = f"아메리카노 {dic_coffee_cup["아메리카노"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{아메리카노} {아메리카노_잔수}")
+        print(f"{dic_coffee_sum["아메리카노"]} {dic_coffee_cup["아메리카노"]}")
         
     def go_to_에스프레소(self,instance):
-        global count,에스프레소,에스프레소_잔수
-        에스프레소 += (2500 * count)
-        에스프레소_잔수 += count
+        global count,dic_coffee_sum,dic_coffee_cup
+        dic_coffee_sum["에스프레소"] += (2500 * count)
+        dic_coffee_cup["에스프레소"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"에스프레소 {에스프레소_잔수}"
+            self.메뉴1_button.text = f"에스프레소 {dic_coffee_cup["에스프레소"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"에스프레소 {에스프레소_잔수}"
+            self.메뉴2_button.text = f"에스프레소 {dic_coffee_cup["에스프레소"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"에스프레소 {에스프레소_잔수}"
+            self.메뉴3_button.text = f"에스프레소 {dic_coffee_cup["에스프레소"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"에스프레소 {에스프레소_잔수}"
+            self.메뉴4_button.text = f"에스프레소 {dic_coffee_cup["에스프레소"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"에스프레소 {에스프레소_잔수}"
+            self.메뉴5_button.text = f"에스프레소 {dic_coffee_cup["에스프레소"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"에스프레소 {에스프레소_잔수}"
+            self.메뉴6_button.text = f"에스프레소 {dic_coffee_cup["에스프레소"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"에스프레소 {에스프레소_잔수}"
+            self.메뉴7_button.text = f"에스프레소 {dic_coffee_cup["에스프레소"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{에스프레소} {에스프레소_잔수}")
+        print(f"{dic_coffee_sum["에스프레소"]} {dic_coffee_cup["에스프레소"]}")
             
     
     def go_to_드립(self,instance):
-        global count,드립,드립_잔수
-        드립 += (2500 * count)
-        드립_잔수+= count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["드립"] += (4000 * count)
+        dic_coffee_cup["드립"]+= count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"드립 {드립_잔수}"
+            self.메뉴1_button.text = f"드립 {dic_coffee_cup["드립"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"드립 {드립_잔수}"
+            self.메뉴2_button.text = f"드립 {dic_coffee_cup["드립"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"드립 {드립_잔수}"
+            self.메뉴3_button.text = f"드립 {dic_coffee_cup["드립"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"드립 {드립_잔수}"
+            self.메뉴4_button.text = f"드립 {dic_coffee_cup["드립"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"드립 {드립_잔수}"
+            self.메뉴5_button.text = f"드립 {dic_coffee_cup["드립"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"드립 {드립_잔수}"
+            self.메뉴6_button.text = f"드립 {dic_coffee_cup["드립"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"드립 {드립_잔수}"
+            self.메뉴7_button.text = f"드립 {dic_coffee_cup["드립"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{드립} {드립_잔수}")
+        print(f"{dic_coffee_sum["드립"]} {dic_coffee_cup["드립"]}")
         
     def go_to_더치(self,instance):
-        global count,더치,더치_잔수
-        더치 += (2500 * count)
-        더치_잔수 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["더치"] += (3500 * count)
+        dic_coffee_cup["더치"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"더치 {더치_잔수}"
+            self.메뉴1_button.text = f"더치 {dic_coffee_cup["더치"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"더치 {더치_잔수}"
+            self.메뉴2_button.text = f"더치 {dic_coffee_cup["더치"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"더치 {더치_잔수}"
+            self.메뉴3_button.text = f"더치 {dic_coffee_cup["더치"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"더치 {더치_잔수}"
+            self.메뉴4_button.text = f"더치 {dic_coffee_cup["더치"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"더치 {더치_잔수}"
+            self.메뉴5_button.text = f"더치 {dic_coffee_cup["더치"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"더치 {더치_잔수}"
+            self.메뉴6_button.text = f"더치 {dic_coffee_cup["더치"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"더치 {더치_잔수}"
+            self.메뉴7_button.text = f"더치 {dic_coffee_cup["더치"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{더치} {더치_잔수}")
+        print(f"{dic_coffee_sum["더치"]} {dic_coffee_cup["더치"]}")
         
     def go_to_라떼(self,instance):
-        global count,라떼,라떼_잔수
-        라떼 += (2500 * count)
-        라떼_잔수 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["라떼"] += (3000 * count)
+        dic_coffee_cup["라떼"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"라떼 {라떼_잔수}"
+            self.메뉴1_button.text = f"라떼 {dic_coffee_cup["라떼"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"라떼 {라떼_잔수}"
+            self.메뉴2_button.text = f"라떼 {dic_coffee_cup["라떼"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"라떼 {라떼_잔수}"
+            self.메뉴3_button.text = f"라떼 {dic_coffee_cup["라떼"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"라떼 {라떼_잔수}"
+            self.메뉴4_button.text = f"라떼 {dic_coffee_cup["라떼"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"라떼 {라떼_잔수}"
+            self.메뉴5_button.text = f"라떼 {dic_coffee_cup["라떼"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"라떼 {라떼_잔수}"
+            self.메뉴6_button.text = f"라떼 {dic_coffee_cup["라떼"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"라떼 {라떼_잔수}"
+            self.메뉴7_button.text = f"라떼 {dic_coffee_cup["라떼"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{라떼} {라떼_잔수}")
+        print(f"{dic_coffee_sum["라떼"]} {dic_coffee_cup["라떼"]}")
         
     def go_to_더치라떼(self,instance):
-        global count,더치라떼,더치라떼_잔수
-        더치라떼 += (2500 * count)
-        더치라떼_잔수 += count
+        global count,dic_coffee_sum,dic_coffee_cup
+        dic_coffee_sum["더치라떼"] += (4000 * count)
+        dic_coffee_cup["더치라떼"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"더치라떼 {더치라떼_잔수}"
+            self.메뉴1_button.text = f"더치라떼 {dic_coffee_cup["더치라떼"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"더치라떼 {더치라떼_잔수}"
+            self.메뉴2_button.text = f"더치라떼 {dic_coffee_cup["더치라떼"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"더치라떼 {더치라떼_잔수}"
+            self.메뉴3_button.text = f"더치라떼 {dic_coffee_cup["더치라떼"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"더치라떼 {더치라떼_잔수}"
+            self.메뉴4_button.text = f"더치라떼 {dic_coffee_cup["더치라떼"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"더치라떼 {더치라떼_잔수}"
+            self.메뉴5_button.text = f"더치라떼 {dic_coffee_cup["더치라떼"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"더치라떼 {더치라떼_잔수}"
+            self.메뉴6_button.text = f"더치라떼 {dic_coffee_cup["더치라떼"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"더치라떼 {더치라떼_잔수}"
+            self.메뉴7_button.text = f"더치라떼 {dic_coffee_cup["더치라떼"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{더치라떼} {더치라떼_잔수}")
+        print(f"{dic_coffee_sum["더치라떼"]} {dic_coffee_cup["더치라떼"]}")
         
     def go_to_바닐라라떼(self,instance):
-        global count,바닐라라떼,바닐라라떼_잔수
-        바닐라라떼 += (2500 * count)
-        바닐라라떼_잔수 += count
+        global count,dic_coffee_sum,dic_coffee_cup
+        dic_coffee_sum["바닐라라떼"] += (3500 * count)
+        dic_coffee_cup["바닐라라떼"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"바닐라라떼 {바닐라라떼_잔수}"
+            self.메뉴1_button.text = f"바닐라라떼 {dic_coffee_cup["바닐라라떼"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"바닐라라떼 {바닐라라떼_잔수}"
+            self.메뉴2_button.text = f"바닐라라떼 {dic_coffee_cup["바닐라라떼"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"바닐라라떼 {바닐라라떼_잔수}"
+            self.메뉴3_button.text = f"바닐라라떼 {dic_coffee_cup["바닐라라떼"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"바닐라라떼 {바닐라라떼_잔수}"
+            self.메뉴4_button.text = f"바닐라라떼 {dic_coffee_cup["바닐라라떼"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"바닐라라떼 {바닐라라떼_잔수}"
+            self.메뉴5_button.text = f"바닐라라떼 {dic_coffee_cup["바닐라라떼"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"바닐라라떼 {바닐라라떼_잔수}"
+            self.메뉴6_button.text = f"바닐라라떼 {dic_coffee_cup["바닐라라떼"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"바닐라라떼 {바닐라라떼_잔수}"
+            self.메뉴7_button.text = f"바닐라라떼 {dic_coffee_cup["바닐라라떼"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{바닐라라떼} {바닐라라떼_잔수}")
+        print(f"{dic_coffee_sum["바닐라라떼"]} {dic_coffee_cup["바닐라라떼"]}")
         
     def go_to_민트라떼종류(self,instance):
-        global count,민트라떼종류,민트라떼종류_잔수
-        민트라떼종류 += (2500 * count)
-        민트라떼종류_잔수 += count
+        global count,dic_coffee_sum,dic_coffee_cup
+        dic_coffee_sum["민트라떼"] += (4000 * count)
+        dic_coffee_cup["민트라떼"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"민트라떼 {민트라떼종류_잔수}"
+            self.메뉴1_button.text = f"민트라떼 {dic_coffee_cup["민트라떼"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"민트라떼 {민트라떼종류_잔수}"
+            self.메뉴2_button.text = f"민트라떼 {dic_coffee_cup["민트라떼"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"민트라떼 {민트라떼종류_잔수}"
+            self.메뉴3_button.text = f"민트라떼 {dic_coffee_cup["민트라떼"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"민트라떼 {민트라떼종류_잔수}"
+            self.메뉴4_button.text = f"민트라떼 {dic_coffee_cup["민트라떼"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"민트라떼 {민트라떼종류_잔수}"
+            self.메뉴5_button.text = f"민트라떼 {dic_coffee_cup["민트라떼"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"민트라떼 {민트라떼종류_잔수}"
+            self.메뉴6_button.text = f"민트라떼 {dic_coffee_cup["민트라떼"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"민트라떼 {민트라떼종류_잔수}"
+            self.메뉴7_button.text = f"민트라떼 {dic_coffee_cup["민트라떼"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{민트라떼종류} {민트라떼종류_잔수}")
+        print(f"{dic_coffee_sum["민트라떼"]} {dic_coffee_cup["민트라떼"]}")
         
     def go_to_카푸치노(self,instance):
-        global count,카푸치노,카푸치노_잔수
-        카푸치노 += (2500 * count)
-        카푸치노_잔수 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["카푸치노"] += (3000 * count)
+        dic_coffee_cup["카푸치노"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"카푸치노 {카푸치노_잔수}"
+            self.메뉴1_button.text = f"카푸치노 {dic_coffee_cup["카푸치노"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"카푸치노 {카푸치노_잔수}"
+            self.메뉴2_button.text = f"카푸치노 {dic_coffee_cup["카푸치노"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"카푸치노 {카푸치노_잔수}"
+            self.메뉴3_button.text = f"카푸치노 {dic_coffee_cup["카푸치노"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"카푸치노 {카푸치노_잔수}"
+            self.메뉴4_button.text = f"카푸치노 {dic_coffee_cup["카푸치노"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"카푸치노 {카푸치노_잔수}"
+            self.메뉴5_button.text = f"카푸치노 {dic_coffee_cup["카푸치노"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"카푸치노 {카푸치노_잔수}"
+            self.메뉴6_button.text = f"카푸치노 {dic_coffee_cup["카푸치노"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"카푸치노 {카푸치노_잔수}"
+            self.메뉴7_button.text = f"카푸치노 {dic_coffee_cup["카푸치노"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{카푸치노} {카푸치노_잔수}")
+        print(f"{dic_coffee_sum["카푸치노"]} {dic_coffee_cup["카푸치노"]}")
         
     def go_to_콜드브루(self,instance):
-        global count,콜드브루,콜드브루_잔수
-        콜드브루 += (2500 * count)
-        콜드브루 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["콜드브루"] += (3000 * count)
+        dic_coffee_cup["콜드브루"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"콜드브루 {콜드브루_잔수}"
+            self.메뉴1_button.text = f"콜드브루 {dic_coffee_cup["콜드브루"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"콜드브루 {콜드브루_잔수}"
+            self.메뉴2_button.text = f"콜드브루 {dic_coffee_cup["콜드브루"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"콜드브루 {콜드브루_잔수}"
+            self.메뉴3_button.text = f"콜드브루 {dic_coffee_cup["콜드브루"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"콜드브루 {콜드브루_잔수}"
+            self.메뉴4_button.text = f"콜드브루 {dic_coffee_cup["콜드브루"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"콜드브루 {콜드브루_잔수}"
+            self.메뉴5_button.text = f"콜드브루 {dic_coffee_cup["콜드브루"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"콜드브루 {콜드브루_잔수}"
+            self.메뉴6_button.text = f"콜드브루 {dic_coffee_cup["콜드브루"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"콜드브루 {콜드브루_잔수}"
+            self.메뉴7_button.text = f"콜드브루 {dic_coffee_cup["콜드브루"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{콜드브루} {콜드브루_잔수}")
+        print(f"{dic_coffee_sum["콜드브루"]} {dic_coffee_cup["콜드브루"]}")
     
     def go_to_카페모카(self,instance):
-        global count,카페모카,카페모카_잔수
-        카페모카 += (2500 * count)
-        카페모카_잔수 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["카페모카"] += (3500 * count)
+        dic_coffee_cup["카페모카"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"카페모카 {카페모카_잔수}"
+            self.메뉴1_button.text = f"카페모카 {dic_coffee_cup["카페모카"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"카페모카 {카페모카_잔수}"
+            self.메뉴2_button.text = f"카페모카 {dic_coffee_cup["카페모카"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"카페모카 {카페모카_잔수}"
+            self.메뉴3_button.text = f"카페모카 {dic_coffee_cup["카페모카"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"카페모카 {카페모카_잔수}"
+            self.메뉴4_button.text = f"카페모카 {dic_coffee_cup["카페모카"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"카페모카 {카페모카_잔수}"
+            self.메뉴5_button.text = f"카페모카 {dic_coffee_cup["카페모카"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"카페모카 {카페모카_잔수}"
+            self.메뉴6_button.text = f"카페모카 {dic_coffee_cup["카페모카"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"카페모카 {카페모카_잔수}"
+            self.메뉴7_button.text = f"카페모카 {dic_coffee_cup["카페모카"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{카페모카} {카페모카_잔수}")
+        print(f"{dic_coffee_sum["카페모카"]} {dic_coffee_cup["카페모카"]}")
         
     def go_to_보리커피(self,instance):
-        global count,보리커피,보리커피_잔수
-        보리커피 += (2500 * count)
-        보리커피_잔수 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["보리커피"] += (2500 * count)
+        dic_coffee_cup["보리커피"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"보리커피 {보리커피_잔수}"
+            self.메뉴1_button.text = f"보리커피 {dic_coffee_cup["보리커피"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"보리커피 {보리커피_잔수}"
+            self.메뉴2_button.text = f"보리커피 {dic_coffee_cup["보리커피"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"보리커피 {보리커피_잔수}"
+            self.메뉴3_button.text = f"보리커피 {dic_coffee_cup["보리커피"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"보리커피 {보리커피_잔수}"
+            self.메뉴4_button.text = f"보리커피 {dic_coffee_cup["보리커피"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"보리커피 {보리커피_잔수}"
+            self.메뉴5_button.text = f"보리커피 {dic_coffee_cup["보리커피"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"보리커피 {보리커피_잔수}"
+            self.메뉴6_button.text = f"보리커피 {dic_coffee_cup["보리커피"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"보리커피 {보리커피_잔수}"
+            self.메뉴7_button.text = f"보리커피 {dic_coffee_cup["보리커피"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{보리커피} {보리커피_잔수}")
+        print(f"{dic_coffee_sum["보리커피"]} {dic_coffee_cup["보리커피"]}")
         
     def go_to_플렛화이트(self,instance):
-        global count,플렛화이트,플렛화이트_잔수
-        플렛화이트 += (2500 * count)
-        플렛화이트_잔수 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["플렛화이트"] += (3000 * count)
+        dic_coffee_cup["플렛화이트"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"플렛화이트 {플렛화이트_잔수}"
+            self.메뉴1_button.text = f"플렛화이트 {dic_coffee_cup["플렛화이트"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"플렛화이트 {플렛화이트_잔수}"
+            self.메뉴2_button.text = f"플렛화이트 {dic_coffee_cup["플렛화이트"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"플렛화이트 {플렛화이트_잔수}"
+            self.메뉴3_button.text = f"플렛화이트 {dic_coffee_cup["플렛화이트"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"플렛화이트 {플렛화이트_잔수}"
+            self.메뉴4_button.text = f"플렛화이트 {dic_coffee_cup["플렛화이트"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"플렛화이트 {플렛화이트_잔수}"
+            self.메뉴5_button.text = f"플렛화이트 {dic_coffee_cup["플렛화이트"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"플렛화이트 {플렛화이트_잔수}"
+            self.메뉴6_button.text = f"플렛화이트 {dic_coffee_cup["플렛화이트"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"플렛화이트 {플렛화이트_잔수}"
+            self.메뉴7_button.text = f"플렛화이트 {dic_coffee_cup["플렛화이트"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{플렛화이트} {플렛화이트_잔수}")
+        print(f"{dic_coffee_sum["플렛화이트"]} {dic_coffee_cup["플렛화이트"]}")
 
     def go_to_꼼빠냐(self,instance):
-        global count,꼼빠냐,꼼빠냐_잔수
-        꼼빠냐 += (2500 * count)
-        꼼빠냐_잔수 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["꼼빠냐"] += (3500 * count)
+        dic_coffee_cup["꼼빠냐"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"꼼빠냐 {꼼빠냐_잔수}"
+            self.메뉴1_button.text = f"꼼빠냐 {dic_coffee_cup["꼼빠냐"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"꼼빠냐 {꼼빠냐_잔수}"
+            self.메뉴2_button.text = f"꼼빠냐 {dic_coffee_cup["꼼빠냐"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"꼼빠냐 {꼼빠냐_잔수}"
+            self.메뉴3_button.text = f"꼼빠냐 {dic_coffee_cup["꼼빠냐"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"꼼빠냐 {꼼빠냐_잔수}"
+            self.메뉴4_button.text = f"꼼빠냐 {dic_coffee_cup["꼼빠냐"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"꼼빠냐 {꼼빠냐_잔수}"
+            self.메뉴5_button.text = f"꼼빠냐 {dic_coffee_cup["꼼빠냐"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"꼼빠냐 {꼼빠냐_잔수}"
+            self.메뉴6_button.text = f"꼼빠냐 {dic_coffee_cup["꼼빠냐"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"꼼빠냐 {꼼빠냐_잔수}"
+            self.메뉴7_button.text = f"꼼빠냐 {dic_coffee_cup["꼼빠냐"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{꼼빠냐} {꼼빠냐_잔수}")
+        print(f"{dic_coffee_sum["꼼빠냐"]} {dic_coffee_cup["꼼빠냐"]}")
         
     def go_to_아인슈페너(self,instance):
-        global count,아인슈페너,아인슈페너_잔수
-        아인슈페너 += (2500 * count)
-        아인슈페너_잔수 += count
+        global count,dic_coffee_cup,dic_coffee_sum
+        dic_coffee_sum["아인슈페너"] += (4000 * count)
+        dic_coffee_cup["아인슈페너"] += count
         if self.메뉴1_button.text == "":
-            self.메뉴1_button.text = f"아인슈페너 {아인슈페너_잔수}"
+            self.메뉴1_button.text = f"아인슈페너 {dic_coffee_cup["아인슈페너"]}"
         elif self.메뉴2_button.text == "":
-            self.메뉴2_button.text = f"아인슈페너 {아인슈페너_잔수}"
+            self.메뉴2_button.text = f"아인슈페너 {dic_coffee_cup["아인슈페너"]}"
         elif self.메뉴3_button.text == "":
-            self.메뉴3_button.text = f"아인슈페너 {아인슈페너_잔수}"
+            self.메뉴3_button.text = f"아인슈페너 {dic_coffee_cup["아인슈페너"]}"
         elif self.메뉴4_button.text == "":
-            self.메뉴4_button.text = f"아인슈페너 {아인슈페너_잔수}"
+            self.메뉴4_button.text = f"아인슈페너 {dic_coffee_cup["아인슈페너"]}"
         elif self.메뉴5_button.text == "":
-            self.메뉴5_button.text = f"아인슈페너 {아인슈페너_잔수}"
+            self.메뉴5_button.text = f"아인슈페너 {dic_coffee_cup["아인슈페너"]}"
         elif self.메뉴6_button.text == "":
-            self.메뉴6_button.text = f"아인슈페너 {아인슈페너_잔수}"
+            self.메뉴6_button.text = f"아인슈페너 {dic_coffee_cup["아인슈페너"]}"
         elif self.메뉴7_button.text == "":
-            self.메뉴7_button.text = f"아인슈페너 {아인슈페너_잔수}"
+            self.메뉴7_button.text = f"아인슈페너 {dic_coffee_cup["아인슈페너"]}"
         count = 1
         self.popup.dismiss()
         self.cup.text = "1"
-        print(f"{아인슈페너} {아인슈페너_잔수}")
+        print(f"{dic_coffee_sum["아인슈페너"]} {dic_coffee_cup["아인슈페너"]}")
         
     def go_to_베리고(self,instance):
         global count,베리고,베리고_잔수
@@ -2237,11 +2338,28 @@ class OrderScreen(Screen):
         self.cup.text = "1"
         print(f"{레몬에이드} {레몬에이드_잔수}")
         
-    def go_to_복숭아바질에이드(self,instance):
-        instance.background_color = (0, 1, 0, 1)
-        global 주문금액
-        주문금액 += 3500
-        Clock.schedule_once(lambda dt: self.reset_color(instance), 0.2)
+    def go_to_복숭아바질(self,instance):
+        global count,복숭아바질,복숭아바질_잔수
+        복숭아바질 += (2500 * count)
+        복숭아바질_잔수 += count
+        if self.메뉴1_button.text == "":
+            self.메뉴1_button.text = f"복숭아바질 {복숭아바질_잔수}"
+        elif self.메뉴2_button.text == "":
+            self.메뉴2_button.text = f"복숭아바질 {복숭아바질_잔수}"
+        elif self.메뉴3_button.text == "":
+            self.메뉴3_button.text = f"복숭아바질 {복숭아바질_잔수}"
+        elif self.메뉴4_button.text == "":
+            self.메뉴4_button.text = f"복숭아바질 {복숭아바질_잔수}"
+        elif self.메뉴5_button.text == "":
+            self.메뉴5_button.text = f"복숭아바질 {복숭아바질_잔수}"
+        elif self.메뉴6_button.text == "":
+            self.메뉴6_button.text = f"복숭아바질 {복숭아바질_잔수}"
+        elif self.메뉴7_button.text == "":
+            self.메뉴7_button.text = f"복숭아바질 {복숭아바질_잔수}"
+        count = 1
+        self.popup.dismiss()
+        self.cup.text = "1"
+        print(f"{복숭아바질} {복숭아바질_잔수}")
         
     def go_to_초코라떼(self,instance):
         instance.background_color = (0, 1, 0, 1)
@@ -2387,21 +2505,19 @@ class OrderScreen(Screen):
         주문금액 += 2700
         Clock.schedule_once(lambda dt: self.reset_color(instance), 0.2)
         
+        #self.메뉴1_button.bind(on_press =lambda instance, name="[장바구니]" + self.메뉴1_button.text.split(" ")[0]: self.메뉴1_open_popup(name,instance))
+        
     def go_to_주문(self,instance):
-        global 주문금액
-        global 주문_이름
-        sum = 주문금액
-        name = 주문_이름
-
-        url = "http://15.165.161.106:5000/menu_order"
+        m1 = self.메뉴1_button.text.split(" ")[0]
+        print(m1, dic_coffee_sum[m1], dic_coffee_cup[m1])
+        m2 = self.메뉴2_button.text.split(" ")[0]
+        print(m2, dic_coffee_sum[m2], dic_coffee_cup[m2])
+        m3 = self.메뉴3_button.text.split(" ")[0]
+        print(m3, dic_coffee_sum[m3], dic_coffee_cup[m3])
+        m4 = self.메뉴4_button.text.split(" ")[0]
+        print(m4, dic_coffee_sum[m4], dic_coffee_cup[m4])
         
-        data = {
-            "sum" : sum,
-            "name" : name
-                }
-        
-        requests.post(url, json=data)
-        주문금액 = 0
+            
     
     def go_to_뒤로(self,instance):
         # global 모든 전역변수 초기화 0으로
@@ -2412,11 +2528,17 @@ class OrderScreen(Screen):
         self.메뉴5_button.text = ''
         self.메뉴6_button.text = ''
         self.메뉴7_button.text = ''
+        for i in dic_coffee_sum.keys():
+            dic_coffee_sum[i] = 0
+            dic_coffee_cup[i] = 0
+        for n in dic_beverage_sum.keys():
+            dic_beverage_sum[n] = 0
+            dic_beverage_cup[n] = 0
         self.manager.current = 'name_choose'
         self.scroll_view.scroll_y = 1
         
+
         
-    
         
         
         
